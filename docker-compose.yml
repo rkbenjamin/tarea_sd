@@ -1,0 +1,65 @@
+services:
+  almacenamiento:
+    build: ./almacenamiento
+    volumes:
+      - ./data:/data
+    ports:
+      - "5004:5004"
+    networks: [appnet]
+
+  cache:
+    build: ./cache
+    environment:
+      - CACHE_CAPACITY=900
+      - CACHE_POLICY=LRU
+      - CACHE_TTL=4200
+    ports:
+      - "5001:5001"
+    networks: [appnet]
+
+  ollama:
+    image: ollama/ollama:latest
+    ports:
+      - "11434:11434"
+    volumes:
+      - ./ollama:/root/.ollama
+    networks: [appnet]
+
+  llm:
+    build: ./llm
+    environment:
+      - OLLAMA_HOST=http://ollama:11434
+      - OLLAMA_MODEL=tinyllama
+      - LLM_DELAY_MS=0
+    ports:
+      - "5002:5002"
+    depends_on:
+      - ollama
+    networks: [appnet]
+
+  score:
+    build: ./score
+    ports:
+      - "5003:5003"
+    networks: [appnet]
+
+  g_trafico:
+    build: ./g_trafico
+    environment:
+      - STORAGE_URL=http://storage:5004
+      - CACHE_URL=http://cache:5001
+      - LLM_URL=http://llm:5002
+      - SCORE_URL=http://score:5003
+      - TRAFFIC_DIST=zipf   
+      - ZIPF_ALPHA=1.2
+    ports:
+      - "5000:5000"
+    depends_on:
+      - storage
+      - cache
+      - llm
+      - score
+    networks: [appnet]
+
+networks:
+  appnet:
