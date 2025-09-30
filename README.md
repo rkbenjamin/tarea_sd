@@ -67,3 +67,20 @@ Sistema distribuido que compara y analiza la calidad de respuestas generadas por
 git clone <repositorio>
 cd tareap2_sd
 docker compose up -d --build
+```
+
+### 2. Inicializar base de datos
+```bash
+curl -X POST http://localhost:5004/init
+```
+
+### 3. Realizar consultas
+```bash
+curl "http://localhost:5004/random?dist=zipf&alpha=1.2"
+
+curl "http://localhost:5000/consulta?dist=poisson&lambda=10"
+```
+### 4. Revisar estadísticas
+```bash
+curl -s http://localhost:5001/stats | jq
+```
