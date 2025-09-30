@@ -31,6 +31,68 @@ Sistema distribuido que compara y analiza la calidad de respuestas generadas por
 - Docker Compose
 - 4GB RAM mínimo (para Ollama)
 
+# Tecnologías Utilizadas
+
+## Backend y APIs
+- **Python 3.11** - Lenguaje de desarrollo
+- **Flask** - Framework web para los microservicios
+- **Requests** - Cliente HTTP para comunicación entre servicios
+- **Scikit-learn** - Para cálculo de similitud coseno y TF-IDF
+
+## Base de Datos y Almacenamiento
+- **SQLite** - Base de datos
+- **Pandas** - Procesamiento y carga de datasets
+
+## Cache y Optimización
+- **Collections.OrderedDict** - Implementación de cache en memoria
+- **Políticas LRU/LFU** - Mecanismos de evicción configurables
+
+## Modelo de Lenguaje
+- **Ollama** - Plataforma para ejecución local de LLMs
+- **TinyLLama** - Modelo de lenguaje
+
+## Contenerización y Despliegue
+- **Docker** - Contenerización de aplicaciones
+- **Docker Compose** - Orquestación de múltiples servicios
+
+## Desarrollo y Calidad de Código
+- **JQ** - Procesamiento de JSON en línea de comandos
+- **CURL** - Testing de endpoints HTTP
+
+---
+
+# Estructura del Proyecto
+
+tareap2_sd/
+├── docker-compose.yml
+├── g_trafico/
+│   ├── app.py
+│   ├── Dockerfile
+│   └── requirements.txt
+├── almacenamiento/
+│   ├── app.py
+│   ├── Dockerfile
+│   └── requirements.txt
+├── cache/
+│   ├── app.py
+│   ├── Dockerfile
+│   └── requirements.txt
+├── llm/
+│   ├── app.py
+│   ├── Dockerfile
+│   └── requirements.txt
+├── puntaje/
+│   ├── app.py
+│   ├── Dockerfile
+│   └── requirements.txt
+├── data/
+│   ├── test.csv
+│   └── results.db
+├── ollama/
+│   └── (modelos descargados)
+└── README.md
+
+
 ### 1. Clonar y Ejecutar
 ```bash
 git clone <repositorio>
