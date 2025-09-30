@@ -60,36 +60,6 @@ Sistema distribuido que compara y analiza la calidad de respuestas generadas por
 - **CURL** - Testing de endpoints HTTP
 
 ---
-# Estructura del Proyecto
-
-tareap2_sd/
-├── docker-compose.yml
-├── g_trafico/
-│   ├── app.py
-│   ├── Dockerfile
-│   └── requirements.txt
-├── almacenamiento/
-│   ├── app.py
-│   ├── Dockerfile
-│   └── requirements.txt
-├── cache/
-│   ├── app.py
-│   ├── Dockerfile
-│   └── requirements.txt
-├── llm/
-│   ├── app.py
-│   ├── Dockerfile
-│   └── requirements.txt
-├── puntaje/
-│   ├── app.py
-│   ├── Dockerfile
-│   └── requirements.txt
-├── data/
-│   ├── test.csv
-│   └── results.db
-├── ollama/
-│   └── (modelos descargados)
-└── README.md
 
 
 ### 1. Clonar y Ejecutar
