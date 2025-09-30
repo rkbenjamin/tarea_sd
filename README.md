@@ -7,10 +7,10 @@ Sistema distribuido que compara y analiza la calidad de respuestas generadas por
 
 ### Requisitos Funcionales
 - [x] **Dataset Yahoo! Answers**: 20,001 registros procesados
-- [x] **Generador de Tráfico Sintético**: 3 distribuciones implementadas
-- [x] **Sistema de Cache**: Configurable con políticas LRU/LFU
+- [x] **Generador de Tráfico Sintético**: 2 distribuciones implementadas (Zipf y Poisson)
+- [x] **Sistema de Cache**: Configurable con políticas LRU/FIFO
 - [x] **Métrica de Calidad**: Similitud coseno con embeddings TF-IDF
-- [x] **Almacenamiento Persistente**: SQLite con +20K registros
+- [x] **Almacenamiento Persistente**: SQLite
 - [x] **Arquitectura en Contenedores**: Docker Compose
 
 ### Componentes del Sistema
