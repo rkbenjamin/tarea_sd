@@ -35,4 +35,4 @@ Sistema distribuido que compara y analiza la calidad de respuestas generadas por
 ```bash
 git clone <repositorio>
 cd tareap2_sd
-docker-compose up --build
+docker compose up -d --build
