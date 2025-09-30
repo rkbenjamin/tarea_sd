@@ -14,7 +14,7 @@ def compute():
 
     score = cosine_similarity(vectors[0], vectors[1])[0][0]
 
-    return jsonify({"score": float(score)})
+    return jsonify({"puntaje": float(score)})
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5003)

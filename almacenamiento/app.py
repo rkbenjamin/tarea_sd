@@ -109,7 +109,6 @@ def get_by_offset(conn, offset):
     if not r: return None
     return {"id": r[0], "category": r[1], "title": r[2], "question": r[3], "best_answer": r[4]}
 
-# --- Poisson sin dependencias: algoritmo de Knuth ---
 def sample_poisson(lam: float) -> int:
     if lam <= 0:
         return 0

@@ -3,18 +3,17 @@ import requests, os, time
 
 app = Flask(__name__)
 
-STORAGE_URL = os.getenv("STORAGE_URL", "http://storage:5004")
+ALMACENAMIENTO_URL = os.getenv("ALMACENAMIENTO_URL", "http://almacenamiento:5004")
 CACHE_URL   = os.getenv("CACHE_URL", "http://cache:5001")
 LLM_URL     = os.getenv("LLM_URL", "http://llm:5002")
-SCORE_URL   = os.getenv("SCORE_URL", "http://score:5003")
+PUNTAJE_URL   = os.getenv("PUNTAJE_URL", "http://puntaje:5003")
 
-# uniform | zipf | poisson
 DEFAULT_DIST   = os.getenv("TRAFFIC_DIST", "uniform")
 ZIPF_ALPHA     = os.getenv("ZIPF_ALPHA", "1.2")
 POISSON_LAMBDA = os.getenv("POISSON_LAMBDA", "10")
 
-@app.route("/next-question", methods=["GET"])
-def next_question():
+@app.route("/consulta", methods=["GET"])
+def consulta():
     dist  = request.args.get("dist", DEFAULT_DIST).lower()
     alpha = request.args.get("alpha", ZIPF_ALPHA)
     lam   = request.args.get("lambda", POISSON_LAMBDA)
@@ -25,10 +24,10 @@ def next_question():
     elif dist == "poisson":
         params["lambda"] = lam
 
-    r = requests.get(f"{STORAGE_URL}/random", params=params)
+    r = requests.get(f"{ALMACENAMIENTO_URL}/random", params=params)
     data = r.json()
     if not data.get("ok"):
-        return jsonify({"error": "no data from storage", "details": data}), 500
+        return jsonify({"error": "sin datos en almacenamiento", "details": data}), 500
 
     qrow = data["data"]
     q = qrow["title"]
@@ -46,11 +45,11 @@ def next_question():
         llm_latency_ms = int((t1 - t0) * 1000)
         requests.post(f"{CACHE_URL}/insert", json={"question": q, "answer": llm_a})
 
-    score_resp = requests.post(f"{SCORE_URL}/compute",
+    score_resp = requests.post(f"{PUNTAJE_URL}/compute",
                                json={"human_answer": human_a, "llm_answer": llm_a})
-    score = score_resp.json()["score"]
+    score = score_resp.json()["puntaje"]
 
-    requests.post(f"{STORAGE_URL}/save",
+    requests.post(f"{ALMACENAMIENTO_URL}/save",
                   json={"question": q, "human_answer": human_a,
                         "llm_answer": llm_a, "score": score})
 

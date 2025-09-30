@@ -37,8 +37,8 @@ services:
       - ollama
     networks: [appnet]
 
-  score:
-    build: ./score
+  puntaje:
+    build: ./puntaje
     ports:
       - "5003:5003"
     networks: [appnet]
@@ -46,19 +46,19 @@ services:
   g_trafico:
     build: ./g_trafico
     environment:
-      - STORAGE_URL=http://storage:5004
+      - ALMACENAMIENTO_URL=http://almacenamiento:5004
       - CACHE_URL=http://cache:5001
       - LLM_URL=http://llm:5002
-      - SCORE_URL=http://score:5003
+      - PUNTAJE_URL=http://puntaje:5003
       - TRAFFIC_DIST=zipf   
       - ZIPF_ALPHA=1.2
     ports:
       - "5000:5000"
     depends_on:
-      - storage
+      - almacenamiento
       - cache
       - llm
-      - score
+      - puntaje
     networks: [appnet]
 
 networks:
