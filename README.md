@@ -44,8 +44,7 @@ Sistema distribuido que compara y analiza la calidad de respuestas generadas por
 - **Pandas** - Procesamiento y carga de datasets
 
 ## Cache y Optimización
-- **Collections.OrderedDict** - Implementación de cache en memoria
-- **Políticas LRU/LFU** - Mecanismos de evicción configurables
+- **Políticas LRU/FIFO** - Mecanismos de reemplazo
 
 ## Modelo de Lenguaje
 - **Ollama** - Plataforma para ejecución local de LLMs
