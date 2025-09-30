@@ -60,7 +60,6 @@ Sistema distribuido que compara y analiza la calidad de respuestas generadas por
 - **CURL** - Testing de endpoints HTTP
 
 ---
-
 # Estructura del Proyecto
 
 tareap2_sd/
