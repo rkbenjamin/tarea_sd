@@ -1,7 +1,7 @@
-# Tarea 1 - Sistema Distribuido de Análisis de Preguntas y Respuestas
+# Tarea 1 - Datos, cache y calidad de respuestas
 
 ## Descripción del Proyecto
-Sistema distribuido que compara y analiza la calidad de respuestas generadas por un LLM frente a respuestas humanas del dataset de Yahoo! Answers. La plataforma implementa un pipeline modular con cache, evaluación de calidad y almacenamiento persistente.
+Sistema distribuido que compara y analiza la calidad de respuestas generadas por un LLM frente a respuestas humanas del dataset de Yahoo! Answers.
 
 ## Objetivos Cumplidos
 
