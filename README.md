@@ -76,9 +76,9 @@ curl -X POST http://localhost:5004/init
 
 ### 3. Realizar consultas
 ```bash
-curl "http://localhost:5004/random?dist=zipf&alpha=1.2"
+curl "http://localhost:5004/consulta?dist=zipf&alpha=1.2" #para usar distribucion Zipf
 
-curl "http://localhost:5000/consulta?dist=poisson&lambda=10"
+curl "http://localhost:5000/consulta?dist=poisson&lambda=10" #para usar distribucion Poisson
 ```
 ### 4. Revisar estadísticas
 ```bash
